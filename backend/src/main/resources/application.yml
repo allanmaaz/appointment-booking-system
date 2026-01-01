@@ -1,0 +1,81 @@
+spring:
+  application:
+    name: appointment-booking
+
+  datasource:
+    url: jdbc:postgresql://127.0.0.1:5432/appointment_db
+    username: postgres
+    password: password
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 50
+      minimum-idle: 10
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+      leak-detection-threshold: 60000
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: false
+        jdbc:
+          batch_size: 25
+        order_inserts: true
+        order_updates: true
+        connection:
+          provider_disables_autocommit: false
+    defer-datasource-initialization: true
+    open-in-view: false
+
+  sql:
+    init:
+      mode: always
+      data-locations: classpath:data.sql
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 870977434240-23qht0f9d7r6kn8n1nafcd0uddbf7sfd.apps.googleusercontent.com
+            client-secret: ${GOOGLE_CLIENT_SECRET:your-google-client-secret}
+            scope:
+              - email
+              - profile
+
+  cache:
+    type: simple
+
+  task:
+    execution:
+      pool:
+        core-size: 10
+        max-size: 50
+        queue-capacity: 1000
+
+server:
+  port: 8080
+  tomcat:
+    threads:
+      max: 200
+      min-spare: 20
+    connection-timeout: 20000
+    max-connections: 10000
+    accept-count: 100
+  compression:
+    enabled: true
+    mime-types: text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json
+    min-response-size: 1024
+
+jwt:
+  secret: ${JWT_SECRET:mySecretKeyForJWTTokensWhichShouldBeLongEnoughForHMACAlgorithm}
+  expiration: ${JWT_EXPIRATION:86400000}
+
+logging:
+  level:
+    com.appointment: DEBUG
+    org.springframework.security: DEBUG
