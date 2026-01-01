@@ -39,7 +39,7 @@ A full-stack medical appointment booking system with location-based doctor searc
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/yourusername/appointment-booking-system.git
+git clone https://github.com/allanmaaz/appointment-booking-system.git
 cd appointment-booking-system
 ```
 
