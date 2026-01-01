@@ -3,9 +3,9 @@ spring:
     name: appointment-booking
 
   datasource:
-    url: jdbc:postgresql://127.0.0.1:5432/appointment_db
-    username: postgres
-    password: password
+    url: ${DATABASE_URL:jdbc:postgresql://127.0.0.1:5432/appointment_db}
+    username: ${DB_USER:postgres}
+    password: ${DB_PASSWORD:password}
     driver-class-name: org.postgresql.Driver
     hikari:
       maximum-pool-size: 50
@@ -41,7 +41,7 @@ spring:
       client:
         registration:
           google:
-            client-id: 870977434240-23qht0f9d7r6kn8n1nafcd0uddbf7sfd.apps.googleusercontent.com
+            client-id: ${GOOGLE_CLIENT_ID:your-google-client-id}
             client-secret: ${GOOGLE_CLIENT_SECRET:your-google-client-secret}
             scope:
               - email
@@ -58,7 +58,7 @@ spring:
         queue-capacity: 1000
 
 server:
-  port: 8080
+  port: ${PORT:8080}
   tomcat:
     threads:
       max: 200
