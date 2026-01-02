@@ -1,1 +1,1 @@
-web: cd backend && java -jar target/*.jar
+web: java -Dserver.port=$PORT -jar target/*.jar
