@@ -26,6 +26,7 @@ public class AppointmentController {
     @Autowired
     private AppointmentService appointmentService;
 
+    @SuppressWarnings("null")
     private ResponseEntity<Map<String, Object>> createErrorResponse(HttpStatus status, String message, Exception e) {
         Map<String, Object> errorResponse = new HashMap<>();
         errorResponse.put("error", true);

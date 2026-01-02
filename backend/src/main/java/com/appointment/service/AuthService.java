@@ -11,7 +11,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import java.util.Objects;
 
 @Service
 public class AuthService {
@@ -90,6 +89,7 @@ public class AuthService {
         return userRepository.save(user);
     }
 
+    @SuppressWarnings("null")
     public User updateUserProfile(String email, String phone, String address) {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("User not found"));
@@ -101,6 +101,6 @@ public class AuthService {
             user.setAddress(address);
         }
 
-        return Objects.requireNonNull(userRepository.save(user));
+        return userRepository.save(user);
     }
 }

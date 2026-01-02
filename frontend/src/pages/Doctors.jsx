@@ -195,11 +195,13 @@ const Doctors = () => {
   }
 
   return (
-    <motion.div className="min-h-screen bg-gradient-to-br from-primary-50 via-primary-100 to-accent-100 font-sans tracking-tight"
-         style={{
-           backgroundImage: 'radial-gradient(circle at 25% 25%, rgba(0, 194, 255, 0.1) 0%, transparent 50%), radial-gradient(circle at 75% 75%, rgba(224, 242, 254, 0.3) 0%, transparent 50%)',
-           backgroundSize: '100% 100%'
-         }}>
+    <motion.div
+      className="min-h-screen bg-gradient-to-br from-primary-50 via-primary-100 to-accent-100 font-sans tracking-tight"
+      style={{
+        backgroundImage: 'radial-gradient(circle at 25% 25%, rgba(0, 194, 255, 0.1) 0%, transparent 50%), radial-gradient(circle at 75% 75%, rgba(224, 242, 254, 0.3) 0%, transparent 50%)',
+        backgroundSize: '100% 100%'
+      }}
+    >
       {/* Liquid Glass Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Large Water Bubble */}
@@ -625,7 +627,6 @@ const Doctors = () => {
             </motion.div>
           )}
         </AnimatePresence>
-        </div>
     </motion.div>
   );
 };
