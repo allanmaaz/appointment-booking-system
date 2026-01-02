@@ -33,4 +33,9 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
 
     @Query("SELECT a FROM Appointment a JOIN FETCH a.user JOIN FETCH a.doctor WHERE a.id = :id")
     Optional<Appointment> findByIdWithUserAndDoctor(@Param("id") Long id);
+
+    @Query("SELECT a FROM Appointment a JOIN FETCH a.user JOIN FETCH a.doctor ORDER BY a.appointmentDate DESC, a.appointmentTime DESC")
+    List<Appointment> findAllWithUserAndDoctor();
+
+    long countByStatus(Appointment.AppointmentStatus status);
 }
